@@ -1,0 +1,4 @@
+CleanCode.Naming/bin/*
+CleanCode.Naming/obj/*
+*.user
+*.suo
