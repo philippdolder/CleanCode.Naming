@@ -21,14 +21,55 @@
 
 namespace CleanCode.Naming
 {
+    using System;
+
+    using CleanCode.Naming.Store;
+    using CleanCode.Naming.Weapons;
+
+    using WeaponFact = WeaponFactory.WeaponFactory;
+
     /// <summary>
     /// The Game Engine
     /// </summary>
     public class GameEngine
     {
-         public void PrepareNewGame()
-         {
-             
-         }
+        /// <summary>
+        /// The _weapon factory.
+        /// </summary>
+        private readonly WeaponFact _weaponFactory;
+
+        /// <summary>
+        /// The _storage manager.
+        /// </summary>
+        private readonly StorageManager _storageManager;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameEngine"/> class.
+        /// </summary>
+        public GameEngine()
+        {
+            this._weaponFactory = new WeaponFact();
+            this._storageManager = new StorageManager();
+        }
+
+        /// <summary>
+        /// Prepares the new game.
+        /// </summary>
+        public void PrepareNewGame()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                Weapon forgedWeapon = this._weaponFactory.ForgeNewWeapon();
+
+                this._storageManager.DeliverToInventory(forgedWeapon);
+            }
+
+            Iterator itr = this._storageManager.CreateIterationUnit();
+
+            while (itr.hasNext())
+            {
+                Console.WriteLine(itr.next());
+            }
+        }
     }
 }
