@@ -19,15 +19,20 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming
+namespace CleanCode.Naming.Store
 {
     using System.Collections.ObjectModel;
+
+    using CleanCode.Naming.Weapons;
 
     /// <summary>
     /// Weapon Inventory
     /// </summary>
     public class Inventory
     {
+        /// <summary>
+        /// The m_ the inventory
+        /// </summary>
         private Collection<Weapon> m_TheInventory;
 
         /// <summary>
@@ -35,7 +40,7 @@ namespace CleanCode.Naming
         /// </summary>
         public Inventory()
         {
-            m_TheInventory = new Collection<Weapon>();
+            this.m_TheInventory = new Collection<Weapon>();
         }
 
         /// <summary>
@@ -48,7 +53,7 @@ namespace CleanCode.Naming
         {
             get
             {
-                return m_TheInventory.Count;
+                return this.m_TheInventory.Count;
             }
         }
 
@@ -58,7 +63,7 @@ namespace CleanCode.Naming
         /// <param name="newWeapon">The new weapon.</param>
         public void DeliverToInventory(Weapon newWeapon)
         {
-            m_TheInventory.Add(newWeapon);
+            this.m_TheInventory.Add(newWeapon);
         }
 
         /// <summary>
@@ -68,7 +73,7 @@ namespace CleanCode.Naming
         /// <returns></returns>
         public Weapon TakeFromInventoryPosition(int position)
         {
-            return m_TheInventory[position];
+            return this.m_TheInventory[position];
         }
 
         /// <summary>
@@ -77,7 +82,7 @@ namespace CleanCode.Naming
         /// <param name="p">The position.</param>
         public void EraseWeaponFromInvetory(int p)
         {
-            m_TheInventory.RemoveAt(p);
+            this.m_TheInventory.RemoveAt(p);
         }
     }
 }

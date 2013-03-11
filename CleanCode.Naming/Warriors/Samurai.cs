@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Elb.cs" company="bbv Software Services AG">
+// <copyright file="Samurai.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,28 +15,38 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   Defines the Elb type.
+//   Defines the Samurai type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming
+namespace CleanCode.Naming.Warriors
 {
+    using CleanCode.Naming.Weapon;
+    using CleanCode.Naming.Weapons;
+
     /// <summary>
-    /// The mighty and super cool with the bow Elb from lord of the rings!!!!
+    /// The mighty and super strong with the sword Samurai!!!!
     /// </summary>
     /// <remarks>
-    /// The mighty elb is a master of the art of the bow. However, if he doesn't get his
+    /// The mighty samurai is a master of the art of the sword. However, if he doesn't get his
     /// favored killing tool, he will fight with his bare hands rather than using another weapon!
     /// </remarks>
-    public class Elb : Warrior
+    public class Samurai : Warrior
     {
-        private Weapon coolElbianKillingTool;
+        /// <summary>
+        /// The honored samurai weapon
+        /// </summary>
+        private Weapon honoredSamuraiWeapon;
 
+        /// <summary>
+        /// Equips the warrior with a cool killing tool ^^.
+        /// </summary>
+        /// <param name="weapon"></param>
         public void TakeKillingTool(Weapon weapon)
         {
-            if (weapon is BowImpl)
+            if (weapon is SwordImpl)
             {
-                coolElbianKillingTool = weapon;
+                this.honoredSamuraiWeapon = weapon;
             }
         }
     }

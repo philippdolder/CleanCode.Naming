@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="BowImpl.cs" company="bbv Software Services AG">
+// <copyright file="AncientGreek.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,24 +15,36 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   Bow implementation.
+//   Defines the AncientGreek type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming
+namespace CleanCode.Naming.Warriors
 {
+    using CleanCode.Naming.Weapon;
+    using CleanCode.Naming.Weapons;
+
     /// <summary>
-    /// Bow implementation.
+    /// The mighty and super clever with the spear ancient greek from the time of Alexander the Great!!!!
     /// </summary>
-    public class BowImpl : Weapon
+    /// <remarks>
+    /// The clever ancient greek is a master of the art of the spear. However, if he doesn't get his
+    /// favored killing tool, he will fight with his bare hands rather than using another weapon!
+    /// </remarks>
+    public class AncientGreek
     {
+        private Weapon cleverAncientGreekWeapon;
+
         /// <summary>
-        /// Utilizes this instance.
+        /// Takes the killing tool.
         /// </summary>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public void Utilize()
+        /// <param name="weapon">The weapon.</param>
+        public void TakeKillingTool(Weapon weapon)
         {
-            throw new System.NotImplementedException();
+            if (weapon is SpearImpl)
+            {
+                this.cleverAncientGreekWeapon = weapon;
+            }
         }
     }
 }

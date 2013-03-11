@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Samurai.cs" company="bbv Software Services AG">
+// <copyright file="Iterator.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,29 +15,31 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   Defines the Samurai type.
+//   Defines the Iterator type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming
+namespace CleanCode.Naming.Store
 {
-    /// <summary>
-    /// The mighty and super strong with the sword Samurai!!!!
-    /// </summary>
-    /// <remarks>
-    /// The mighty samurai is a master of the art of the sword. However, if he doesn't get his
-    /// favored killing tool, he will fight with his bare hands rather than using another weapon!
-    /// </remarks>
-    public class Samurai : Warrior
-    {
-        private Weapon honoredSamuraiWeapon;
+    using CleanCode.Naming.Weapons;
 
-        public void TakeKillingTool(Weapon weapon)
-        {
-            if (weapon is SwordImpl)
-            {
-                honoredSamuraiWeapon = weapon;
-            }
-        }
+    /// <summary>
+    /// Weapon Iterator
+    /// </summary>
+    public interface Iterator
+    {
+        /// <summary>
+        /// Nexts this instance.
+        /// </summary>
+        /// <returns>a Weapon</returns>
+        Weapon next();
+
+        /// <summary>
+        /// Determines whether this instance has next.
+        /// </summary>
+        /// <returns>
+        ///   <c>true</c> if this instance has next; otherwise, <c>false</c>.
+        /// </returns>
+        bool hasNext();
     }
 }

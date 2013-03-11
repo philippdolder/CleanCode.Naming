@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AncientGreek.cs" company="bbv Software Services AG">
+// <copyright file="Warrior.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,29 +15,22 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   Defines the AncientGreek type.
+//   Defines the Warrior type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming
+namespace CleanCode.Naming.Warriors
 {
-    /// <summary>
-    /// The mighty and super clever with the spear ancient greek from the time of Alexander the Great!!!!
-    /// </summary>
-    /// <remarks>
-    /// The clever ancient greek is a master of the art of the spear. However, if he doesn't get his
-    /// favored killing tool, he will fight with his bare hands rather than using another weapon!
-    /// </remarks>
-    public class AncientGreek
-    {
-        private Weapon cleverAncientGreekWeapon;
+    using CleanCode.Naming.Weapons;
 
-        public void TakeKillingTool(Weapon weapon)
-        {
-            if (weapon is SpearImpl)
-            {
-                cleverAncientGreekWeapon = weapon;
-            }
-        }
+    /// <summary>
+    /// Warrior
+    /// </summary>
+    public interface Warrior
+    {
+        /// <summary>
+        /// Equips the warrior with a cool killing tool ^^.
+        /// </summary>
+        void TakeKillingTool(Weapon weapon);
     }
 }

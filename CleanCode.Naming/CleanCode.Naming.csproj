@@ -41,20 +41,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AncientGreek.cs" />
-    <Compile Include="BowImpl.cs" />
-    <Compile Include="Elb.cs" />
-    <Compile Include="Inventory.cs" />
-    <Compile Include="Iterator.cs" />
+    <Compile Include="Warriors\AncientGreek.cs" />
+    <Compile Include="WeaponFactory\SpearSmith.cs" />
+    <Compile Include="Weapons\BowImpl.cs" />
+    <Compile Include="Warriors\Elb.cs" />
+    <Compile Include="GameEngine.cs" />
+    <Compile Include="Store\Inventory.cs" />
+    <Compile Include="Store\Iterator.cs" />
+    <Compile Include="WeaponFactory\Bowyer.cs" />
+    <Compile Include="WeaponFactory\IWeaponFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Samurai.cs" />
-    <Compile Include="SpearImpl.cs" />
-    <Compile Include="StorageIteratorImpl.cs" />
-    <Compile Include="StorageManager.cs" />
-    <Compile Include="SwordImpl.cs" />
-    <Compile Include="Warrior.cs" />
-    <Compile Include="Weapon.cs" />
+    <Compile Include="Warriors\Samurai.cs" />
+    <Compile Include="Weapons\SpearImpl.cs" />
+    <Compile Include="Store\StorageIteratorImpl.cs" />
+    <Compile Include="Store\StorageManager.cs" />
+    <Compile Include="Weapons\SwordImpl.cs" />
+    <Compile Include="WeaponFactory\SwordSmith.cs" />
+    <Compile Include="Warriors\Warrior.cs" />
+    <Compile Include="Weapons\Weapon.cs" />
+    <Compile Include="WeaponFactory\WeaponFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

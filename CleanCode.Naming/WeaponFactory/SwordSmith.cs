@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Iterator.cs" company="bbv Software Services AG">
+// <copyright file="SwordSmith.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,29 +15,27 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   Defines the Iterator type.
+//   Defines the SwordSmith type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming
+namespace CleanCode.Naming.WeaponFactory
 {
+    using CleanCode.Naming.Weapon;
+    using CleanCode.Naming.Weapons;
+
     /// <summary>
-    /// Weapon Iterator
+    /// The sword smith
     /// </summary>
-    public interface Iterator
+    public class SwordSmith : IWeaponFactory
     {
         /// <summary>
-        /// Nexts this instance.
+        /// Forges the new weapon.
         /// </summary>
-        /// <returns>a Weapon</returns>
-        Weapon next();
-
-        /// <summary>
-        /// Determines whether this instance has next.
-        /// </summary>
-        /// <returns>
-        ///   <c>true</c> if this instance has next; otherwise, <c>false</c>.
-        /// </returns>
-        bool hasNext();
+        /// <returns></returns>
+        public Weapon ForgeNewWeapon()
+        {
+            return new SwordImpl();
+        }
     }
 }

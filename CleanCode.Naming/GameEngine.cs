@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Program.cs" company="bbv Software Services AG">
+// <copyright file="GameEngine.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,30 +15,20 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   Program.
+//   Defines the GameEngine type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CleanCode.Naming
 {
     /// <summary>
-    /// Program.
+    /// The Game Engine
     /// </summary>
-    class Program
+    public class GameEngine
     {
-        /// <summary>
-        /// Mains the specified args.
-        /// </summary>
-        /// <param name="args">The args.</param>
-        static void Main(string[] args)
-        {
-            GameEngine game = new GameEngine();
-        }
+         public void PrepareNewGame()
+         {
+             
+         }
     }
 }

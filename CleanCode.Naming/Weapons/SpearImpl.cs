@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Program.cs" company="bbv Software Services AG">
+// <copyright file="SpearImpl.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,30 +15,22 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   Program.
+//   Defines the SpearImpl type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CleanCode.Naming
+namespace CleanCode.Naming.Weapons
 {
     /// <summary>
-    /// Program.
+    /// Defines the SpearImpl type.
     /// </summary>
-    class Program
+    public class SpearImpl : Weapon
     {
         /// <summary>
-        /// Mains the specified args.
+        /// Utilizes this instance.
         /// </summary>
-        /// <param name="args">The args.</param>
-        static void Main(string[] args)
+        public void Utilize()
         {
-            GameEngine game = new GameEngine();
         }
     }
 }

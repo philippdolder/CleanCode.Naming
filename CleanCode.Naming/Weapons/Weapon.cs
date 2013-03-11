@@ -19,13 +19,16 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming
+namespace CleanCode.Naming.Weapons
 {
     /// <summary>
     /// Defines Weapon.
     /// </summary>
     public interface Weapon
     {
+        /// <summary>
+        /// Utilizes this instance.
+        /// </summary>
         void Utilize();
     }
 }

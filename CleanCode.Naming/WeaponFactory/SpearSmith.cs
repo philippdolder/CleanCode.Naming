@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="SpearImpl.cs" company="bbv Software Services AG">
+// <copyright file="SpearSmith.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,22 +15,26 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   Defines the SpearImpl type.
+//   The spear smith.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming
+namespace CleanCode.Naming.WeaponFactory
 {
+    using CleanCode.Naming.Weapon;
+    using CleanCode.Naming.Weapons;
+
     /// <summary>
-    /// Defines the SpearImpl type.
+    /// The spear smith.
     /// </summary>
-    public class SpearImpl : Weapon
+    public class SpearSmith : IWeaponFactory
     {
         /// <summary>
-        /// Utilizes this instance.
+        /// Forges the new weapon.
         /// </summary>
-        public void Utilize()
+        public Weapon ForgeNewWeapon()
         {
+            return new SpearImpl();
         }
     }
 }

@@ -19,13 +19,16 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming
+namespace CleanCode.Naming.Weapons
 {
     /// <summary>
     /// Sword implementation.
     /// </summary>
     public class SwordImpl : Weapon
     {
+        /// <summary>
+        /// Utilizes this instance.
+        /// </summary>
         public void Utilize()
         {
             throw new System.NotImplementedException();

@@ -19,8 +19,10 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming
+namespace CleanCode.Naming.Store
 {
+    using CleanCode.Naming.Weapons;
+
     /// <summary>
     /// Storage Iterator Implementation.
     /// </summary>
@@ -42,7 +44,7 @@ namespace CleanCode.Naming
         /// <param name="aInventory">A inventory.</param>
         public StorageIteratorImpl(Inventory aInventory)
         {
-            theInventory = aInventory;
+            this.theInventory = aInventory;
         }
 
         /// <summary>
@@ -53,9 +55,9 @@ namespace CleanCode.Naming
         /// </returns>
         public Weapon next()
         {
-            Weapon takenFromInventoryPosition = theInventory.TakeFromInventoryPosition(curItWpI);
+            Weapon takenFromInventoryPosition = this.theInventory.TakeFromInventoryPosition(this.curItWpI);
 
-            curItWpI++;
+            this.curItWpI++;
 
             return takenFromInventoryPosition;
         }
@@ -68,7 +70,7 @@ namespace CleanCode.Naming
         /// </returns>
         public bool hasNext()
         {
-            return curItWpI < theInventory.TheInventory;
+            return this.curItWpI < this.theInventory.TheInventory;
         }
     }
 }

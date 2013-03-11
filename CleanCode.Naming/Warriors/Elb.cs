@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Warrior.cs" company="bbv Software Services AG">
+// <copyright file="Elb.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,20 +15,39 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   Defines the Warrior type.
+//   Defines the Elb type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming
+namespace CleanCode.Naming.Warriors
 {
+    using CleanCode.Naming.Weapon;
+    using CleanCode.Naming.Weapons;
+
     /// <summary>
-    /// Warrior
+    /// The mighty and super cool with the bow Elb from lord of the rings!!!!
     /// </summary>
-    public interface Warrior
+    /// <remarks>
+    /// The mighty elb is a master of the art of the bow. However, if he doesn't get his
+    /// favored killing tool, he will fight with his bare hands rather than using another weapon!
+    /// </remarks>
+    public class Elb : Warrior
     {
+        /// <summary>
+        /// The cool elbian killing tool
+        /// </summary>
+        private Weapon coolElbianKillingTool;
+
         /// <summary>
         /// Equips the warrior with a cool killing tool ^^.
         /// </summary>
-        void TakeKillingTool(Weapon weapon);
+        /// <param name="weapon"></param>
+        public void TakeKillingTool(Weapon weapon)
+        {
+            if (weapon is BowImpl)
+            {
+                this.coolElbianKillingTool = weapon;
+            }
+        }
     }
 }
