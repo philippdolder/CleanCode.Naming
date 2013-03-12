@@ -24,7 +24,6 @@ namespace CleanCode.Naming.WeaponFactory
     using System;
     using System.Collections.Generic;
 
-    using CleanCode.Naming.Weapon;
     using CleanCode.Naming.Weapons;
 
     /// <summary>
@@ -45,10 +44,22 @@ namespace CleanCode.Naming.WeaponFactory
         /// <summary>
         /// Prevents a default instance of the <see cref="WeaponFactory"/> class from being created.
         /// </summary>
-        private WeaponFactory()
+        public WeaponFactory()
         {
             this.weaponIndication = new Random();
             this.smithRegister = new Dictionary<int, IWeaponFactory>();
+
+            PrepareFactoryForProduction();
+        }
+
+        /// <summary>
+        /// Initialize factory.
+        /// </summary>
+        private void PrepareFactoryForProduction()
+        {
+            this.smithRegister.Add(0, new SwordSmith());
+            this.smithRegister.Add(1, new SpearSmith());
+            this.smithRegister.Add(2, new Bowyer());
         }
 
         /// <summary>

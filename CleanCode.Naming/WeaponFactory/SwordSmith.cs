@@ -21,7 +21,6 @@
 
 namespace CleanCode.Naming.WeaponFactory
 {
-    using CleanCode.Naming.Weapon;
     using CleanCode.Naming.Weapons;
 
     /// <summary>
@@ -32,7 +31,6 @@ namespace CleanCode.Naming.WeaponFactory
         /// <summary>
         /// Forges the new weapon.
         /// </summary>
-        /// <returns></returns>
         public Weapon ForgeNewWeapon()
         {
             return new SwordImpl();

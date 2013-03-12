@@ -21,7 +21,6 @@
 
 namespace CleanCode.Naming.Warriors
 {
-    using CleanCode.Naming.Weapon;
     using CleanCode.Naming.Weapons;
 
     /// <summary>
@@ -33,6 +32,9 @@ namespace CleanCode.Naming.Warriors
     /// </remarks>
     public class AncientGreek
     {
+        /// <summary>
+        /// The clever ancient greek weapon.
+        /// </summary>
         private Weapon cleverAncientGreekWeapon;
 
         /// <summary>

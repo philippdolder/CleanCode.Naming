@@ -31,6 +31,7 @@ namespace CleanCode.Naming.Warriors
         /// <summary>
         /// Equips the warrior with a cool killing tool ^^.
         /// </summary>
+        /// <param name="weapon">The weapon.</param>
         void TakeKillingTool(Weapon weapon);
     }
 }

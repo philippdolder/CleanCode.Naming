@@ -21,7 +21,6 @@
 
 namespace CleanCode.Naming.WeaponFactory
 {
-    using CleanCode.Naming.Weapon;
     using CleanCode.Naming.Weapons;
 
     /// <summary>

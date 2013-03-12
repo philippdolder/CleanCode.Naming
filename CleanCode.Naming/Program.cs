@@ -19,12 +19,6 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace CleanCode.Naming
 {
     /// <summary>
@@ -39,6 +33,7 @@ namespace CleanCode.Naming
         static void Main(string[] args)
         {
             GameEngine game = new GameEngine();
+            game.PrepareNewGame();
         }
     }
 }

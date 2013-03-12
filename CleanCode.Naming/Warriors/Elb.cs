@@ -21,7 +21,6 @@
 
 namespace CleanCode.Naming.Warriors
 {
-    using CleanCode.Naming.Weapon;
     using CleanCode.Naming.Weapons;
 
     /// <summary>
@@ -34,14 +33,14 @@ namespace CleanCode.Naming.Warriors
     public class Elb : Warrior
     {
         /// <summary>
-        /// The cool elbian killing tool
+        /// The cool elbian killing tool.
         /// </summary>
         private Weapon coolElbianKillingTool;
 
         /// <summary>
         /// Equips the warrior with a cool killing tool ^^.
         /// </summary>
-        /// <param name="weapon"></param>
+        /// <param name="weapon">The weapon.</param>
         public void TakeKillingTool(Weapon weapon)
         {
             if (weapon is BowImpl)
