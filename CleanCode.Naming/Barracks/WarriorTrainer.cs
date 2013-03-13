@@ -96,26 +96,6 @@ namespace CleanCode.Naming.Barracks
         }
 
         /// <summary>
-        /// Calculates the next trainer code which is different than the last one.
-        /// </summary>
-        /// <returns>the next trainer code.</returns>
-        private static int calculateTrainerCode()
-        {
-            var u = new Utility();
-            int c2;
-
-            do
-            {
-                c2 = u.GenerateNumber(0, 2);
-            }
-            while (c2 == c);
-
-            c = c2;
-
-            return c2;
-        }
-
-        /// <summary>
         /// Trains the new samurai.
         /// </summary>
         /// <returns>new samurai trainer</returns>
@@ -200,6 +180,26 @@ namespace CleanCode.Naming.Barracks
             }
 
             return w3;
+        }
+
+        /// <summary>
+        /// Calculates the next trainer code which is different than the last one.
+        /// </summary>
+        /// <returns>the next trainer code.</returns>
+        private static int calculateTrainerCode()
+        {
+            var u = new Utility();
+            int c2;
+
+            do
+            {
+                c2 = u.GenerateNumber(0, 2);
+            }
+            while (c2 == c);
+
+            c = c2;
+
+            return c2;
         }
     }
 }

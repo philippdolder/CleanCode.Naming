@@ -53,16 +53,6 @@ namespace CleanCode.Naming.Factory
         }
 
         /// <summary>
-        /// Initialize factory.
-        /// </summary>
-        private void PrepareFactoryForProduction()
-        {
-            this.smithRegister.Add(0, new SwordSmith());
-            this.smithRegister.Add(1, new SpearSmith());
-            this.smithRegister.Add(2, new Bowyer());
-        }
-
-        /// <summary>
         /// Forges randomly a new weapon.
         /// </summary>
         public Weapon ForgeNewWeapon()
@@ -74,6 +64,16 @@ namespace CleanCode.Naming.Factory
             double points = utility.GeneratePercentValue() * 100 + 100;
 
             return this.smithRegister[predicatedWeaponCode].ForgeNewWeapon(points);
+        }
+
+        /// <summary>
+        /// Initialize factory.
+        /// </summary>
+        private void PrepareFactoryForProduction()
+        {
+            this.smithRegister.Add(0, new SwordSmith());
+            this.smithRegister.Add(1, new SpearSmith());
+            this.smithRegister.Add(2, new Bowyer());
         }
     }
 }

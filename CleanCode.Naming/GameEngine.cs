@@ -109,19 +109,6 @@ namespace CleanCode.Naming
         }
 
         /// <summary>
-        /// News the weapons into the storage.
-        /// </summary>
-        private void NewWeaponsIntoTheStorage()
-        {
-            for (int i = 0; i < T * 2; i++)
-            {
-                Weapon theNewWeapon = this._weaponCreator.ForgeNewWeapon();
-
-                this._storageManager.DeliverToInventory(theNewWeapon);
-            }
-        }
-
-        /// <summary>
         /// Runs the game.
         /// </summary>
         public ScoreManager RunGame()
@@ -144,6 +131,19 @@ namespace CleanCode.Naming
             }
 
             return this._scoreManager;
+        }
+
+        /// <summary>
+        /// News the weapons into the storage.
+        /// </summary>
+        private void NewWeaponsIntoTheStorage()
+        {
+            for (int i = 0; i < T * 2; i++)
+            {
+                Weapon theNewWeapon = this._weaponCreator.ForgeNewWeapon();
+
+                this._storageManager.DeliverToInventory(theNewWeapon);
+            }
         }
 
         /// <summary>
