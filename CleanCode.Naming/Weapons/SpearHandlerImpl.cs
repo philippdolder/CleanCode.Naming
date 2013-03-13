@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="SpearSmith.cs" company="bbv Software Services AG">
+// <copyright file="SpearHandlerImpl.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,25 +15,30 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   The spear smith.
+//   Spear fighter weapon handler.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming.WeaponFactory
+namespace CleanCode.Naming.Weapons
 {
-    using CleanCode.Naming.Weapons;
-
     /// <summary>
-    /// The spear smith.
+    /// Spear fighter weapon handler.
     /// </summary>
-    public class SpearSmith : IWeaponFactory
+    public class SpearHandlerImpl : WeaponHandler
     {
         /// <summary>
-        /// Forges the new weapon.
+        /// Handles the equipment of the sword.
         /// </summary>
-        public Weapon ForgeNewWeapon()
+        /// <param name="weapon">The weapon for a sword fighter.</param>
+        /// <returns>If weapon is a sword then it will be utilized; otherwise fists.</returns>
+        public Weapon HandleEquipmentOfWeapon(Weapon weapon)
         {
-            return new SpearImpl();
+            if (weapon is SpearImpl)
+            {
+                return weapon;
+            }
+
+            return new FistsImpl();
         }
     }
 }

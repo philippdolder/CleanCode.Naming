@@ -21,6 +21,8 @@
 
 namespace CleanCode.Naming
 {
+    using System;
+
     /// <summary>
     /// Program.
     /// </summary>
@@ -33,7 +35,18 @@ namespace CleanCode.Naming
         static void Main(string[] args)
         {
             GameEngine game = new GameEngine();
+
             game.PrepareNewGame();
+            game.RecruitWarriors();
+            var scoreUtility = game.RunGame();
+
+            Console.WriteLine(" ");
+            Console.WriteLine("      Team1  vs  Team2");
+            Console.WriteLine("        {0}          {1}", scoreUtility.Team1, scoreUtility.Team2);
+            Console.WriteLine(" ");
+            Console.WriteLine(" ");
+            Console.Write("Press <ENTER> to exit");
+            Console.ReadLine();
         }
     }
 }

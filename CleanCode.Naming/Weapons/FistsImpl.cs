@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Weapon.cs" company="bbv Software Services AG">
+// <copyright file="FistImpl.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,16 +15,16 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   Defines Weapon.
+//   Defines the FistImpl type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace CleanCode.Naming.Weapons
 {
     /// <summary>
-    /// Defines Weapon.
+    /// Fist implementation
     /// </summary>
-    public interface Weapon
+    public class FistsImpl : Weapon
     {
         /// <summary>
         /// Gets the attack points.
@@ -32,7 +32,13 @@ namespace CleanCode.Naming.Weapons
         /// <value>
         /// The attack points.
         /// </value>
-        double APoints { get; }
+        public double APoints
+        {
+            get
+            {
+                return 0;
+            }
+        }
 
         /// <summary>
         /// Gets the label.
@@ -40,6 +46,12 @@ namespace CleanCode.Naming.Weapons
         /// <value>
         /// The label.
         /// </value>
-        string Label { get; }
+        public string Label
+        {
+            get
+            {
+                return "fists";
+            }
+        }
     }
 }

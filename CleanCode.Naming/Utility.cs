@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="SwordImpl.cs" company="bbv Software Services AG">
+// <copyright file="Utility.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,46 +15,57 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   Sword implementation.
+//   Common Functions.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming.Weapons
+namespace CleanCode.Naming
 {
+    using System;
+    using System.Threading;
+
     /// <summary>
-    /// Sword implementation.
+    /// Common Functions.
     /// </summary>
-    public class SwordImpl : Weapon
+    public class Utility
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SwordImpl" /> class.
+        /// The RND.
         /// </summary>
-        /// <param name="attackPoints">The attack points.</param>
-        public SwordImpl(double attackPoints)
+        private Random rnd;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Utility" /> class.
+        /// </summary>
+        public Utility()
         {
-            APoints = attackPoints;
+            this.rnd = new Random();
         }
 
         /// <summary>
-        /// Gets the attack points.
+        /// Generates the number.
         /// </summary>
-        /// <value>
-        /// The attack points.
-        /// </value>
-        public double APoints { get; private set; }
+        /// <param name="smallestPossible">The smallest possible.</param>
+        /// <param name="greatestPossible">The greatest possible.</param>
+        public int GenerateNumber(int smallestPossible, int greatestPossible)
+        {
+            int gnrNbr = rnd.Next(smallestPossible, greatestPossible + 1);
+
+            Thread.Sleep(30); // improves random generation
+
+            return gnrNbr;
+        }
 
         /// <summary>
-        /// Gets the label.
+        /// Generates a percent value between 0 and 1.
         /// </summary>
-        /// <value>
-        /// The label.
-        /// </value>
-        public string Label
+        public double GeneratePercentValue()
         {
-            get
-            {
-                return "sword";
-            }
+            double pV = rnd.NextDouble();
+
+            Thread.Sleep(30); // improves random generation
+
+            return pV;
         }
     }
 }

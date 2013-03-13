@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Elb.cs" company="bbv Software Services AG">
+// <copyright file="LevelCalculator.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,38 +15,32 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   Defines the Elb type.
+//   Level Calculator
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace CleanCode.Naming.Warriors
 {
+    using System;
+
     using CleanCode.Naming.Weapons;
 
     /// <summary>
-    /// The mighty and super cool with the bow Elb from lord of the rings!!!!
+    /// Level Calculator
     /// </summary>
-    /// <remarks>
-    /// The mighty elb is a master of the art of the bow. However, if he doesn't get his
-    /// favored killing tool, he will fight with his bare hands rather than using another weapon!
-    /// </remarks>
-    public class Elb : Warrior
+    public static class LevelCalculationHelper
     {
         /// <summary>
-        /// The cool elbian killing tool.
+        /// Determines the level.
         /// </summary>
-        private Weapon coolElbianKillingTool;
-
-        /// <summary>
-        /// Equips the warrior with a cool killing tool ^^.
-        /// </summary>
+        /// <param name="skills">The skills.</param>
         /// <param name="weapon">The weapon.</param>
-        public void TakeKillingTool(Weapon weapon)
+        public static int DetermineCombatLevel(SkillsContainer skills, Weapon weapon)
         {
-            if (weapon is BowImpl)
-            {
-                this.coolElbianKillingTool = weapon;
-            }
+            double a = skills.Attack + weapon.APoints;
+            double d = skills.Defense / skills.Handicap;
+
+            return Convert.ToInt32(Math.Ceiling(a + d));
         }
     }
 }

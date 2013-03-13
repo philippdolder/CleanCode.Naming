@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Weapon.cs" company="bbv Software Services AG">
+// <copyright file="FightEnd.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,31 +15,46 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   Defines Weapon.
+//   Result of a fight.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming.Weapons
+namespace CleanCode.Naming
 {
     /// <summary>
-    /// Defines Weapon.
+    /// Result of a fight.
     /// </summary>
-    public interface Weapon
+    public class FightEnd
     {
         /// <summary>
-        /// Gets the attack points.
+        /// Initializes a new instance of the <see cref="FightEnd" /> class.
         /// </summary>
-        /// <value>
-        /// The attack points.
-        /// </value>
-        double APoints { get; }
+        /// <param name="w1Won">if set to <c>true</c> [w1 won].</param>
+        public FightEnd(bool w1Won)
+        {
+            W1Killed = !w1Won;
+        }
 
         /// <summary>
-        /// Gets the label.
+        /// Gets a value indicating whether [w1 killed].
         /// </summary>
         /// <value>
-        /// The label.
+        ///   <c>true</c> if [w1 killed]; otherwise, <c>false</c>.
         /// </value>
-        string Label { get; }
+        public bool W1Killed { get; private set; }
+
+        /// <summary>
+        /// Gets a value indicating whether [w2 killed].
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [w2 killed]; otherwise, <c>false</c>.
+        /// </value>
+        public bool W2Killed
+        {
+            get
+            {
+                return !W1Killed;
+            }
+        }
     }
 }

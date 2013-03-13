@@ -27,11 +27,34 @@ namespace CleanCode.Naming.Weapons
     public class BowImpl : Weapon
     {
         /// <summary>
-        /// Utilizes this instance.
+        /// Initializes a new instance of the <see cref="BowImpl" /> class.
         /// </summary>
-        public void Utilize()
+        /// <param name="attakPoints">The attak points.</param>
+        public BowImpl(double attackPoints)
         {
-            throw new System.NotImplementedException();
+            APoints = attackPoints;
+        }
+
+        /// <summary>
+        /// Gets the attack points.
+        /// </summary>
+        /// <value>
+        /// The attack points.
+        /// </value>
+        public double APoints { get; private set; }
+
+        /// <summary>
+        /// Gets the label.
+        /// </summary>
+        /// <value>
+        /// The label.
+        /// </value>
+        public string Label
+        {
+            get
+            {
+                return "bow";
+            }
         }
     }
 }

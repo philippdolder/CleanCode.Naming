@@ -30,12 +30,44 @@ namespace CleanCode.Naming.Warriors
     /// The clever ancient greek is a master of the art of the spear. However, if he doesn't get his
     /// favored killing tool, he will fight with his bare hands rather than using another weapon!
     /// </remarks>
-    public class AncientGreek
+    public class AncientGreek : Warrior
     {
+        /// <summary>
+        /// The weapon handler
+        /// </summary>
+        private readonly WeaponHandler weaponHandler;
+
         /// <summary>
         /// The clever ancient greek weapon.
         /// </summary>
         private Weapon cleverAncientGreekWeapon;
+
+        /// <summary>
+        /// The qualities
+        /// </summary>
+        private SkillsContainer qualities;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AncientGreek" /> class.
+        /// </summary>
+        /// <param name="weaponHandler">The weapon handler.</param>
+        /// <param name="qualities">The qualities.</param>
+        public AncientGreek(WeaponHandler weaponHandler, SkillsContainer qualities)
+        {
+            this.weaponHandler = weaponHandler;
+            this.qualities = qualities;
+        }
+
+        /// <summary>
+        /// Combats the level.
+        /// </summary>
+        public int CombatLevel
+        {
+            get
+            {
+                return LevelCalculationHelper.DetermineCombatLevel(this.qualities, this.cleverAncientGreekWeapon);
+            }
+        }
 
         /// <summary>
         /// Takes the killing tool.
@@ -43,10 +75,15 @@ namespace CleanCode.Naming.Warriors
         /// <param name="weapon">The weapon.</param>
         public void TakeKillingTool(Weapon weapon)
         {
-            if (weapon is SpearImpl)
-            {
-                this.cleverAncientGreekWeapon = weapon;
-            }
+            this.cleverAncientGreekWeapon = this.weaponHandler.HandleEquipmentOfWeapon(weapon);
+        }
+
+        /// <summary>
+        /// Combats the level.
+        /// </summary>
+        public string CombatLevelText()
+        {
+            return string.Format("Greek is fighting with {0} ({1} attack points)", this.cleverAncientGreekWeapon.Label, this.CombatLevel);
         }
     }
 }

@@ -31,12 +31,12 @@ namespace CleanCode.Naming.Store
         /// <summary>
         /// The inventory.
         /// </summary>
-        private readonly Inventory theInventory;
+        private readonly Inventory m_theInventory;
 
         /// <summary>
         /// The currently for iteration selected weapon index.
         /// </summary>
-        private int curItWpI = 0;
+        private int m_curItWpI = 0;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StorageIteratorImpl" /> class.
@@ -44,7 +44,7 @@ namespace CleanCode.Naming.Store
         /// <param name="aInventory">A inventory.</param>
         public StorageIteratorImpl(Inventory aInventory)
         {
-            this.theInventory = aInventory;
+            m_theInventory = aInventory;
         }
 
         /// <summary>
@@ -55,9 +55,9 @@ namespace CleanCode.Naming.Store
         /// </returns>
         public Weapon next()
         {
-            Weapon takenFromInventoryPosition = this.theInventory.TakeFromInventoryPosition(this.curItWpI);
+            Weapon takenFromInventoryPosition = m_theInventory.TakeFromInventoryPosition(m_curItWpI);
 
-            this.curItWpI++;
+            m_curItWpI++;
 
             return takenFromInventoryPosition;
         }
@@ -70,7 +70,7 @@ namespace CleanCode.Naming.Store
         /// </returns>
         public bool hasNext()
         {
-            return this.curItWpI < this.theInventory.TheInventory;
+            return m_curItWpI < m_theInventory.TheInventory;
         }
     }
 }

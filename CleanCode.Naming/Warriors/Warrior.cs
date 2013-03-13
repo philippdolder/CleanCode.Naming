@@ -24,14 +24,24 @@ namespace CleanCode.Naming.Warriors
     using CleanCode.Naming.Weapons;
 
     /// <summary>
-    /// Warrior
+    /// Warrior interface.
     /// </summary>
     public interface Warrior
     {
+        /// <summary>
+        /// Combats the level.
+        /// </summary>
+        int CombatLevel { get; }
+
         /// <summary>
         /// Equips the warrior with a cool killing tool ^^.
         /// </summary>
         /// <param name="weapon">The weapon.</param>
         void TakeKillingTool(Weapon weapon);
+
+        /// <summary>
+        /// Combats the level.
+        /// </summary>
+        string CombatLevelText();
     }
 }

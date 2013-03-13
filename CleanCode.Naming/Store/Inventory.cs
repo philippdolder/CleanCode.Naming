@@ -40,7 +40,7 @@ namespace CleanCode.Naming.Store
         /// </summary>
         public Inventory()
         {
-            this.m_TheInventory = new Collection<Weapon>();
+            m_TheInventory = new Collection<Weapon>();
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace CleanCode.Naming.Store
         {
             get
             {
-                return this.m_TheInventory.Count;
+                return m_TheInventory.Count;
             }
         }
 
@@ -63,7 +63,7 @@ namespace CleanCode.Naming.Store
         /// <param name="newWeapon">The new weapon.</param>
         public void DeliverToInventory(Weapon newWeapon)
         {
-            this.m_TheInventory.Add(newWeapon);
+            m_TheInventory.Add(newWeapon);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace CleanCode.Naming.Store
         /// <returns></returns>
         public Weapon TakeFromInventoryPosition(int position)
         {
-            return this.m_TheInventory[position];
+            return m_TheInventory[position];
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace CleanCode.Naming.Store
         /// <param name="p">The position.</param>
         public void EraseWeaponFromInvetory(int p)
         {
-            this.m_TheInventory.RemoveAt(p);
+            m_TheInventory.RemoveAt(p);
         }
     }
 }

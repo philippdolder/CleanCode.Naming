@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Weapon.cs" company="bbv Software Services AG">
+// <copyright file="ScoreManager.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,31 +15,56 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   Defines Weapon.
+//   Manages the score.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming.Weapons
+namespace CleanCode.Naming
 {
     /// <summary>
-    /// Defines Weapon.
+    /// Manages the score.
     /// </summary>
-    public interface Weapon
+    public class ScoreManager
     {
         /// <summary>
-        /// Gets the attack points.
+        /// Gets the team1.
         /// </summary>
         /// <value>
-        /// The attack points.
+        /// The team1.
         /// </value>
-        double APoints { get; }
+        public int Team1 { get; private set; }
 
         /// <summary>
-        /// Gets the label.
+        /// Gets the team2.
         /// </summary>
         /// <value>
-        /// The label.
+        /// The team2.
         /// </value>
-        string Label { get; }
+        public int Team2 { get; private set; }
+
+        /// <summary>
+        /// Releases the score.
+        /// </summary>
+        public void NewScore()
+        {
+            this.Team1 = 0;
+            this.Team2 = 0;
+        }
+
+        /// <summary>
+        /// Team1s the won.
+        /// </summary>
+        public void Team1Won()
+        {
+            this.Team1++;
+        }
+
+        /// <summary>
+        /// Team2s the won.
+        /// </summary>
+        public void Team2Won()
+        {
+            this.Team2++;
+        }
     }
 }

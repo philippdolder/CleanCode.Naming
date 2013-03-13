@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Weapon.cs" company="bbv Software Services AG">
+// <copyright file="SwordHandlerImp.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,31 +15,30 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   Defines Weapon.
+//   Sword fighter weapon handler.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace CleanCode.Naming.Weapons
 {
     /// <summary>
-    /// Defines Weapon.
+    /// Sword fighter weapon handler.
     /// </summary>
-    public interface Weapon
+    public class SwordHandlerImpl : WeaponHandler
     {
         /// <summary>
-        /// Gets the attack points.
+        /// Handles the equipment of the sword.
         /// </summary>
-        /// <value>
-        /// The attack points.
-        /// </value>
-        double APoints { get; }
+        /// <param name="weapon">The weapon for a sword fighter.</param>
+        /// <returns>If weapon is a sword then it will be utilized; otherwise fists.</returns>
+        public Weapon HandleEquipmentOfWeapon(Weapon weapon)
+        {
+            if (weapon is SwordImpl)
+            {
+                return weapon;
+            }
 
-        /// <summary>
-        /// Gets the label.
-        /// </summary>
-        /// <value>
-        /// The label.
-        /// </value>
-        string Label { get; }
+            return new FistsImpl();
+        }
     }
 }

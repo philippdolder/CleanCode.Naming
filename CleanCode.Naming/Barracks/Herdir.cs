@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Bowyer.cs" company="bbv Software Services AG">
+// <copyright file="ElbLord.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,25 +15,34 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   The bowyer.
+//   An elf lord is a teacher of the elf. He will train new elbs.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming.WeaponFactory
+namespace CleanCode.Naming.Barracks
 {
+    using CleanCode.Naming.Warriors;
     using CleanCode.Naming.Weapons;
 
     /// <summary>
-    /// The bowyer.
+    /// An herdir is a teacher of the elf. He will train new elbs.
     /// </summary>
-    public class Bowyer : IWeaponFactory
+    public class Herdir : Instructor
     {
         /// <summary>
-        /// Forges the new weapon.
+        /// Instructs new warriors.
         /// </summary>
-        public Weapon ForgeNewWeapon()
+        /// <param name="o">The offense.</param>
+        /// <param name="d">The defense.</param>
+        /// <param name="p">The penalty.</param>
+        /// <returns>
+        /// A new warrior.
+        /// </returns>
+        public Warrior instruct(double o, double d, int p)
         {
-            return new BowImpl();
+            var sc = new SkillsContainer(o, d, p);
+
+            return new Elf(new BowHandlerImpl(), sc);
         }
     }
 }

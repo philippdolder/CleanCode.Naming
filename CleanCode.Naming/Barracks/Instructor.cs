@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Weapon.cs" company="bbv Software Services AG">
+// <copyright file="Instructor.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,31 +15,28 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   Defines Weapon.
+//   Defines the Instructor type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming.Weapons
+namespace CleanCode.Naming.Barracks
 {
+    using CleanCode.Naming.Warriors;
+
     /// <summary>
-    /// Defines Weapon.
+    /// Instructor interface for new warrirors.
     /// </summary>
-    public interface Weapon
+    public interface Instructor
     {
         /// <summary>
-        /// Gets the attack points.
+        /// Instructs new warriors.
         /// </summary>
-        /// <value>
-        /// The attack points.
-        /// </value>
-        double APoints { get; }
-
-        /// <summary>
-        /// Gets the label.
-        /// </summary>
-        /// <value>
-        /// The label.
-        /// </value>
-        string Label { get; }
+        /// <param name="o">The offense.</param>
+        /// <param name="d">The defense.</param>
+        /// <param name="p">The penalty.</param>
+        /// <returns>
+        /// A new warrior.
+        /// </returns>
+        Warrior instruct(double o, double d, int p);
     }
 }

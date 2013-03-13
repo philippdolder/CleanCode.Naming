@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="SwordSmith.cs" company="bbv Software Services AG">
+// <copyright file="Sensei.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,25 +15,34 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   Defines the SwordSmith type.
+//   A sensei is a teacher of the samurai. He will train new samurais.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming.WeaponFactory
+namespace CleanCode.Naming.Barracks
 {
+    using CleanCode.Naming.Warriors;
     using CleanCode.Naming.Weapons;
 
     /// <summary>
-    /// The sword smith
+    /// A sensei is a teacher of the samurai. He will train new samurais.
     /// </summary>
-    public class SwordSmith : IWeaponFactory
+    public class Sensei : Instructor
     {
         /// <summary>
-        /// Forges the new weapon.
+        /// Instructs new warriors.
         /// </summary>
-        public Weapon ForgeNewWeapon()
+        /// <param name="o">The offense.</param>
+        /// <param name="d">The defense.</param>
+        /// <param name="p">The penalty.</param>
+        /// <returns>
+        /// A new warrior.
+        /// </returns>
+        public Warrior instruct(double o, double d, int p)
         {
-            return new SwordImpl();
+            var sc = new SkillsContainer(o, d, p);
+
+            return new Samurai(new SwordHandlerImpl(), sc);
         }
     }
 }

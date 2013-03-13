@@ -27,10 +27,34 @@ namespace CleanCode.Naming.Weapons
     public class SpearImpl : Weapon
     {
         /// <summary>
-        /// Utilizes this instance.
+        /// Initializes a new instance of the <see cref="SpearImpl" /> class.
         /// </summary>
-        public void Utilize()
+        /// <param name="attackPoints">The attack points.</param>
+        public SpearImpl(double attackPoints)
         {
+            APoints = attackPoints;
+        }
+
+        /// <summary>
+        /// Gets the attack points.
+        /// </summary>
+        /// <value>
+        /// The attack points.
+        /// </value>
+        public double APoints { get; private set; }
+
+        /// <summary>
+        /// Gets the label.
+        /// </summary>
+        /// <value>
+        /// The label.
+        /// </value>
+        public string Label
+        {
+            get
+            {
+                return "spear";
+            }
         }
     }
 }

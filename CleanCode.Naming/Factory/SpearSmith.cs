@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Weapon.cs" company="bbv Software Services AG">
+// <copyright file="SpearSmith.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,31 +15,26 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   Defines Weapon.
+//   The spear smith.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming.Weapons
+namespace CleanCode.Naming.Factory
 {
+    using CleanCode.Naming.Weapons;
+
     /// <summary>
-    /// Defines Weapon.
+    /// The spear smith.
     /// </summary>
-    public interface Weapon
+    public class SpearSmith : IWeaponCreator
     {
         /// <summary>
-        /// Gets the attack points.
+        /// Forges the new weapon.
         /// </summary>
-        /// <value>
-        /// The attack points.
-        /// </value>
-        double APoints { get; }
-
-        /// <summary>
-        /// Gets the label.
-        /// </summary>
-        /// <value>
-        /// The label.
-        /// </value>
-        string Label { get; }
+        /// <param name="points">The attack points.</param>
+        public Weapon ForgeNewWeapon(double points)
+        {
+            return new SpearImpl(points);
+        }
     }
 }

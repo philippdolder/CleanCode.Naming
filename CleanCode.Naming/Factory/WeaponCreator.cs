@@ -19,7 +19,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming.WeaponFactory
+namespace CleanCode.Naming.Factory
 {
     using System;
     using System.Collections.Generic;
@@ -29,25 +29,25 @@ namespace CleanCode.Naming.WeaponFactory
     /// <summary>
     /// Creates new weapons for the ultimate fight.
     /// </summary>
-    public class WeaponFactory
+    public class WeaponCreator
     {
         /// <summary>
         /// The smith register
         /// </summary>
-        private readonly Dictionary<int, IWeaponFactory> smithRegister;
+        private readonly Dictionary<int, IWeaponCreator> smithRegister;
 
         /// <summary>
         /// The weapon indication
         /// </summary>
-        private readonly Random weaponIndication;
+        private readonly Utility weaponIndication;
 
         /// <summary>
-        /// Prevents a default instance of the <see cref="WeaponFactory"/> class from being created.
+        /// Prevents a default instance of the <see cref="WeaponCreator"/> class from being created.
         /// </summary>
-        public WeaponFactory()
+        public WeaponCreator()
         {
-            this.weaponIndication = new Random();
-            this.smithRegister = new Dictionary<int, IWeaponFactory>();
+            this.weaponIndication = new Utility();
+            this.smithRegister = new Dictionary<int, IWeaponCreator>();
 
             PrepareFactoryForProduction();
         }
@@ -67,9 +67,15 @@ namespace CleanCode.Naming.WeaponFactory
         /// </summary>
         public Weapon ForgeNewWeapon()
         {
-            int predicatedWeaponCode = this.weaponIndication.Next() % 3;
+            int predicatedWeaponCode = this.weaponIndication.GenerateNumber(0, 2);
 
-            return this.smithRegister[predicatedWeaponCode].ForgeNewWeapon();
+            var utility = new Utility();
+
+            double points = utility.GeneratePercentValue() * 100 + 100;
+
+            System.Threading.Thread.Sleep(10); // improves random generation
+
+            return this.smithRegister[predicatedWeaponCode].ForgeNewWeapon(points);
         }
     }
 }

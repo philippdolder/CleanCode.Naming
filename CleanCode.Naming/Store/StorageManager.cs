@@ -31,14 +31,14 @@ namespace CleanCode.Naming.Store
         /// <summary>
         /// The storage inventory.
         /// </summary>
-        private readonly Inventory _i;
+        private readonly Inventory m_i;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StorageManager" /> class.
         /// </summary>
         public StorageManager()
         {
-            this._i = new Inventory();
+            m_i = new Inventory();
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace CleanCode.Naming.Store
         /// </summary>
         public Iterator CreateIterationUnit()
         {
-            return new StorageIteratorImpl(this._i);
+            return new StorageIteratorImpl(m_i);
         }
 
         /// <summary>
@@ -55,18 +55,18 @@ namespace CleanCode.Naming.Store
         /// <param name="newWeapon">The new weapon.</param>
         public void DeliverToInventory(Weapon newWeapon)
         {
-            this._i.DeliverToInventory(newWeapon);
+            m_i.DeliverToInventory(newWeapon);
         }
 
         /// <summary>
         /// Takes the last delivered weapon out of the inventory and returns it.
         /// </summary>
         /// <returns>The last delivered weapon.</returns>
-        public Weapon TakeFromInventoryPosition()
+        public Weapon TakeFromInventory()
         {
-            Weapon weaponTakenFromLastInventoryPosition = this._i.TakeFromInventoryPosition(this._i.TheInventory - 1);
+            Weapon weaponTakenFromLastInventoryPosition = m_i.TakeFromInventoryPosition(m_i.TheInventory - 1);
 
-            this._i.EraseWeaponFromInvetory(this._i.TheInventory - 1);
+            m_i.EraseWeaponFromInvetory(m_i.TheInventory - 1);
 
             return weaponTakenFromLastInventoryPosition;
         }

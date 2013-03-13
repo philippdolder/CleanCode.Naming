@@ -23,10 +23,11 @@ namespace CleanCode.Naming
 {
     using System;
 
+    using CleanCode.Naming.Barracks;
+    using CleanCode.Naming.Factory;
     using CleanCode.Naming.Store;
+    using CleanCode.Naming.Warriors;
     using CleanCode.Naming.Weapons;
-
-    using WeaponFact = WeaponFactory.WeaponFactory;
 
     /// <summary>
     /// The Game Engine
@@ -34,9 +35,14 @@ namespace CleanCode.Naming
     public class GameEngine
     {
         /// <summary>
+        /// The number of turns.
+        /// </summary>
+        private const int T = 5;
+
+        /// <summary>
         /// The _weapon factory.
         /// </summary>
-        private readonly WeaponFact _weaponFactory;
+        private readonly WeaponCreator _weaponCreator;
 
         /// <summary>
         /// The _storage manager.
@@ -44,12 +50,30 @@ namespace CleanCode.Naming
         private readonly StorageManager _storageManager;
 
         /// <summary>
+        /// The _battle field handler
+        /// </summary>
+        private readonly BattleFieldHandler _battleFieldHandler;
+
+        /// <summary>
+        /// The _score manager
+        /// </summary>
+        private readonly ScoreManager _scoreManager;
+
+        /// <summary>
+        /// The _utility
+        /// </summary>
+        private readonly Utility _utility;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="GameEngine"/> class.
         /// </summary>
         public GameEngine()
         {
-            this._weaponFactory = new WeaponFact();
+            this._weaponCreator = new WeaponCreator();
             this._storageManager = new StorageManager();
+            this._battleFieldHandler = new BattleFieldHandler();
+            this._scoreManager = new ScoreManager();
+            this._utility = new Utility();
         }
 
         /// <summary>
@@ -57,19 +81,106 @@ namespace CleanCode.Naming
         /// </summary>
         public void PrepareNewGame()
         {
-            for (int i = 0; i < 10; i++)
-            {
-                Weapon forgedWeapon = this._weaponFactory.ForgeNewWeapon();
-
-                this._storageManager.DeliverToInventory(forgedWeapon);
-            }
+            this._scoreManager.NewScore();
+            this.NewWeaponsIntoTheStorage();
 
             Iterator itr = this._storageManager.CreateIterationUnit();
 
+            Console.WriteLine("weapons in the storage:");
             while (itr.hasNext())
             {
-                Console.WriteLine(itr.next());
+                Console.WriteLine(" " + itr.next().Label);
             }
+        }
+
+        /// <summary>
+        /// Recruits the warriors.
+        /// </summary>
+        public void RecruitWarriors()
+        {
+            for (int index = 0; index < T; index++)
+            {
+                var recruit1 = this.recruit();
+                var recruit2 = this.recruit();
+
+                this._battleFieldHandler.AssignWarriorToTeam1(recruit1);
+                this._battleFieldHandler.AssignWarriorToTeam2(recruit2);
+            }
+        }
+
+        /// <summary>
+        /// News the weapons into the storage.
+        /// </summary>
+        private void NewWeaponsIntoTheStorage()
+        {
+            for (int i = 0; i < T * 2; i++)
+            {
+                Weapon theNewWeapon = this._weaponCreator.ForgeNewWeapon();
+
+                this._storageManager.DeliverToInventory(theNewWeapon);
+            }
+        }
+
+        /// <summary>
+        /// Runs the game.
+        /// </summary>
+        public ScoreManager RunGame()
+        {
+            Console.WriteLine(Environment.NewLine);
+            Console.WriteLine("NEW GAME STARTS:");
+
+            for (int i = 0; i < this._battleFieldHandler.NumberOfRounds; i++)
+            {
+                FightEnd end = this._battleFieldHandler.LetThemFight(i);
+
+                if (end.W1Killed)
+                {
+                    this._scoreManager.Team2Won();
+                }
+                else
+                {
+                    this._scoreManager.Team1Won();
+                }
+            }
+
+            return this._scoreManager;
+        }
+
+        /// <summary>
+        /// Recruits this instance.
+        /// </summary>
+        private Warrior recruit()
+        {
+            return WarriorTrainer.trainRandom()
+                .exerciseAttackSkills(this.attack())
+                .measureLackOfStamina(this.staminaDrawback())
+                .practiceDefenseAbilities(this.defensiveness())
+                .equip(this._storageManager.TakeFromInventory())
+                .recruit();
+        }
+
+        /// <summary>
+        /// Attacks this instance.
+        /// </summary>
+        private int attack()
+        {
+            return _utility.GenerateNumber(1, 4);
+        }
+
+        /// <summary>
+        /// Staminas the drawback.
+        /// </summary>
+        private int staminaDrawback()
+        {
+            return _utility.GenerateNumber(2, 7);
+        }
+
+        /// <summary>
+        /// Defensivenesses this instance.
+        /// </summary>
+        private int defensiveness()
+        {
+            return _utility.GenerateNumber(7, 12);
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Weapon.cs" company="bbv Software Services AG">
+// <copyright file="Philosopher.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,31 +15,34 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   Defines Weapon.
+//   Defines the Philosopher type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming.Weapons
+namespace CleanCode.Naming.Barracks
 {
+    using CleanCode.Naming.Warriors;
+    using CleanCode.Naming.Weapons;
+
     /// <summary>
-    /// Defines Weapon.
+    /// A philosopher is a teacher of the ancient greek. He will train new greek soldiers.
     /// </summary>
-    public interface Weapon
+    public class Philosopher : Instructor
     {
         /// <summary>
-        /// Gets the attack points.
+        /// Instructs new warriors.
         /// </summary>
-        /// <value>
-        /// The attack points.
-        /// </value>
-        double APoints { get; }
+        /// <param name="o">The offense.</param>
+        /// <param name="d">The defense.</param>
+        /// <param name="p">The penalty.</param>
+        /// <returns>
+        /// A new warrior.
+        /// </returns>
+        public Warrior instruct(double o, double d, int p)
+        {
+            var sc = new SkillsContainer(o, d, p);
 
-        /// <summary>
-        /// Gets the label.
-        /// </summary>
-        /// <value>
-        /// The label.
-        /// </value>
-        string Label { get; }
+            return new AncientGreek(new SpearHandlerImpl(), sc);
+        }
     }
 }

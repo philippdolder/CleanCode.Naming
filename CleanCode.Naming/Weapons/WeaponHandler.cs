@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Weapon.cs" company="bbv Software Services AG">
+// <copyright file="WeaponHandler.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,31 +15,22 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   Defines Weapon.
+//   Weapon handler interface.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace CleanCode.Naming.Weapons
 {
     /// <summary>
-    /// Defines Weapon.
+    /// Weapon handler interface.
     /// </summary>
-    public interface Weapon
+    public interface WeaponHandler
     {
         /// <summary>
-        /// Gets the attack points.
+        /// Handles the equipment of a specific weapon.
         /// </summary>
-        /// <value>
-        /// The attack points.
-        /// </value>
-        double APoints { get; }
-
-        /// <summary>
-        /// Gets the label.
-        /// </summary>
-        /// <value>
-        /// The label.
-        /// </value>
-        string Label { get; }
+        /// <param name="weapon">The weapon.</param>
+        /// <returns>The effective weapon of a warrior.</returns>
+        Weapon HandleEquipmentOfWeapon(Weapon weapon);
     }
 }

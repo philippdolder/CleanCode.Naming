@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="SwordImpl.cs" company="bbv Software Services AG">
+// <copyright file="SkillsContainer.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,46 +15,52 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   Sword implementation.
+//   Defines the Skills container type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming.Weapons
+namespace CleanCode.Naming.Warriors
 {
     /// <summary>
-    /// Sword implementation.
+    /// The skills.
     /// </summary>
-    public class SwordImpl : Weapon
+    public class SkillsContainer
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SwordImpl" /> class.
+        /// Initializes a new instance of the <see cref="SkillsContainer" /> class.
         /// </summary>
-        /// <param name="attackPoints">The attack points.</param>
-        public SwordImpl(double attackPoints)
+        /// <param name="attack">The attack.</param>
+        /// <param name="defense">The defense.</param>
+        /// <param name="handicap">The handicap.</param>
+        public SkillsContainer(double attack, double defense, int handicap)
         {
-            APoints = attackPoints;
+            this.Attack = attack;
+            this.Defense = defense;
+            this.Handicap = handicap;
         }
 
         /// <summary>
-        /// Gets the attack points.
+        /// Gets the attack force.
         /// </summary>
         /// <value>
-        /// The attack points.
+        /// The attack force.
         /// </value>
-        public double APoints { get; private set; }
+        public double Attack { get; private set; }
 
         /// <summary>
-        /// Gets the label.
+        /// Gets the defense.
         /// </summary>
         /// <value>
-        /// The label.
+        /// The defense.
         /// </value>
-        public string Label
-        {
-            get
-            {
-                return "sword";
-            }
-        }
+        public double Defense { get; private set; }
+
+        /// <summary>
+        /// Gets the handicap.
+        /// </summary>
+        /// <value>
+        /// The handicap.
+        /// </value>
+        public int Handicap { get; private set; }
     }
 }

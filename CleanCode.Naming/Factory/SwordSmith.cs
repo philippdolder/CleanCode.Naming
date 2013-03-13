@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IWeaponFactory.cs" company="bbv Software Services AG">
+// <copyright file="SwordSmith.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,22 +15,26 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   Defines the IWeaponFactory type.
+//   Defines the SwordSmith type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming.WeaponFactory
+namespace CleanCode.Naming.Factory
 {
     using CleanCode.Naming.Weapons;
 
     /// <summary>
-    /// Weapon factory interface.
+    /// The sword smith
     /// </summary>
-    public interface IWeaponFactory
+    public class SwordSmith : IWeaponCreator
     {
         /// <summary>
         /// Forges the new weapon.
         /// </summary>
-        Weapon ForgeNewWeapon();
+        /// <param name="points">The attack points.</param>
+        public Weapon ForgeNewWeapon(double points)
+        {
+            return new SwordImpl(points);
+        }
     }
 }
