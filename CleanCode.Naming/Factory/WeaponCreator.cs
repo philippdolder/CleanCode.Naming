@@ -73,8 +73,6 @@ namespace CleanCode.Naming.Factory
 
             double points = utility.GeneratePercentValue() * 100 + 100;
 
-            System.Threading.Thread.Sleep(10); // improves random generation
-
             return this.smithRegister[predicatedWeaponCode].ForgeNewWeapon(points);
         }
     }

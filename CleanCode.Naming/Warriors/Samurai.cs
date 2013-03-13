@@ -38,14 +38,14 @@ namespace CleanCode.Naming.Warriors
         private readonly WeaponHandler weaponHandler;
 
         /// <summary>
+        /// The qualities
+        /// </summary>
+        private readonly SkillsContainer qualities;
+
+        /// <summary>
         /// The honored samurai weapon
         /// </summary>
         private Weapon honoredSamuraiWeapon;
-
-        /// <summary>
-        /// The qualities
-        /// </summary>
-        private SkillsContainer qualities;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Samurai" /> class.

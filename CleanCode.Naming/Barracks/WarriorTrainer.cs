@@ -101,14 +101,12 @@ namespace CleanCode.Naming.Barracks
         /// <returns>the next trainer code.</returns>
         private static int calculateTrainerCode()
         {
-            var r = new Random();
+            var u = new Utility();
             int c2;
 
             do
             {
-                c2 = r.Next() % 3;
-
-                System.Threading.Thread.Sleep(10); // improves random generation
+                c2 = u.GenerateNumber(0, 2);
             }
             while (c2 == c);
 

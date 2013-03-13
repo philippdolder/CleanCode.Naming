@@ -38,14 +38,14 @@ namespace CleanCode.Naming.Warriors
         private readonly WeaponHandler weaponHandler;
 
         /// <summary>
+        /// The qualities
+        /// </summary>
+        private readonly SkillsContainer qualities;
+
+        /// <summary>
         /// The cool elbian killing tool.
         /// </summary>
         private Weapon coolElbianKillingTool;
-
-        /// <summary>
-        /// The qualities
-        /// </summary>
-        private SkillsContainer qualities;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Elf" /> class.
