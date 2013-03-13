@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IWeaponFactory.cs" company="bbv Software Services AG">
+// <copyright file="SpearSmith.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,24 +14,17 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 // </copyright>
-// <summary>
-//   Defines the IWeaponFactory type.
-// </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace CleanCode.Naming.Factory
 {
     using CleanCode.Naming.Weapons;
 
-    /// <summary>
-    /// Weapon factory interface.
-    /// </summary>
-    public interface IWeaponCreator
+    public class SpearFactory : IWeaponFactory
     {
-        /// <summary>
-        /// Forges the new weapon.
-        /// </summary>
-        /// <param name="points">The attack points.</param>
-        Weapon ForgeNewWeapon(double points);
+        public IWeapon Create(double weaponAttackPoints)
+        {
+            return new Spear(weaponAttackPoints);
+        }
     }
 }

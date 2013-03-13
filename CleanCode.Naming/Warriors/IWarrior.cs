@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Instructor.cs" company="bbv Software Services AG">
+// <copyright file="Warrior.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,29 +14,18 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 // </copyright>
-// <summary>
-//   Defines the Instructor type.
-// </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming.Barracks
+namespace CleanCode.Naming.Warriors
 {
-    using CleanCode.Naming.Warriors;
+    using CleanCode.Naming.Weapons;
 
-    /// <summary>
-    /// Instructor interface for new warrirors.
-    /// </summary>
-    public interface Instructor
+    public interface IWarrior
     {
-        /// <summary>
-        /// Instructs new warriors.
-        /// </summary>
-        /// <param name="o">The offense.</param>
-        /// <param name="d">The defense.</param>
-        /// <param name="p">The penalty.</param>
-        /// <returns>
-        /// A new warrior.
-        /// </returns>
-        Warrior instruct(double o, double d, int p);
+        int CombatLevel { get; }
+
+        void Equip(IWeapon weapon);
+
+        string CombatMessage();
     }
 }

@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="SpearImpl.cs" company="bbv Software Services AG">
+// <copyright file="BowHandlerImpl.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,47 +14,20 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 // </copyright>
-// <summary>
-//   Defines the SpearImpl type.
-// </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace CleanCode.Naming.Weapons
 {
-    /// <summary>
-    /// Defines the SpearImpl type.
-    /// </summary>
-    public class SpearImpl : Weapon
+    public class BowEquipmentStrategy : IWeaponEquipmentStrategy
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SpearImpl" /> class.
-        /// </summary>
-        /// <param name="attackPoints">The attack points.</param>
-        public SpearImpl(double attackPoints)
+        public IWeapon Equip(IWeapon weapon)
         {
-            APoints = attackPoints;
-        }
-
-        /// <summary>
-        /// Gets the attack points.
-        /// </summary>
-        /// <value>
-        /// The attack points.
-        /// </value>
-        public double APoints { get; private set; }
-
-        /// <summary>
-        /// Gets the label.
-        /// </summary>
-        /// <value>
-        /// The label.
-        /// </value>
-        public string Label
-        {
-            get
+            if (weapon is Bow)
             {
-                return "spear";
+                return weapon;
             }
+
+            return new Fists();
         }
     }
 }

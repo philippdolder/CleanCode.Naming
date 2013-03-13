@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="BowHandlerImpl.cs" company="bbv Software Services AG">
+// <copyright file="Inventory.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,31 +14,44 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 // </copyright>
-// <summary>
-//   Archer weapon handler.
-// </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming.Weapons
+namespace CleanCode.Naming.Storages
 {
-    /// <summary>
-    /// Archer weapon handler.
-    /// </summary>
-    public class BowHandlerImpl : WeaponHandler
-    {
-        /// <summary>
-        /// Handles the equipment of the bow.
-        /// </summary>
-        /// <param name="weapon">The weapon for a archer.</param>
-        /// <returns>If weapon is a bow then it will be utilized; otherwise fists.</returns>
-        public Weapon HandleEquipmentOfWeapon(Weapon weapon)
-        {
-            if (weapon is BowImpl)
-            {
-                return weapon;
-            }
+    using System.Collections.ObjectModel;
 
-            return new FistsImpl();
+    using CleanCode.Naming.Weapons;
+
+    public class WeaponCollection
+    {
+        private readonly Collection<IWeapon> weapons;
+
+        public WeaponCollection()
+        {
+            this.weapons = new Collection<IWeapon>();
+        }
+
+        public int Count
+        {
+            get
+            {
+                return this.weapons.Count;
+            }
+        }
+
+        public void Add(IWeapon newWeapon)
+        {
+            this.weapons.Add(newWeapon);
+        }
+
+        public IWeapon GetAt(int index)
+        {
+            return this.weapons[index];
+        }
+
+        public void RemoveAt(int index)
+        {
+            this.weapons.RemoveAt(index);
         }
     }
 }

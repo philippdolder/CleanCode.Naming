@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Iterator.cs" company="bbv Software Services AG">
+// <copyright file="Sensei.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,32 +14,20 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 // </copyright>
-// <summary>
-//   Defines the Iterator type.
-// </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming.Store
+namespace CleanCode.Naming.Barracks
 {
+    using CleanCode.Naming.Warriors;
     using CleanCode.Naming.Weapons;
 
-    /// <summary>
-    /// Weapon Iterator
-    /// </summary>
-    public interface Iterator
+    public class SamuraiFactory : IWarriorFactory
     {
-        /// <summary>
-        /// Nexts this instance.
-        /// </summary>
-        /// <returns>a Weapon</returns>
-        Weapon next();
+        public IWarrior Create(double attackPoints, double defensePoints, int handicapPoints)
+        {
+            var skills = new Skills(attackPoints, defensePoints, handicapPoints);
 
-        /// <summary>
-        /// Determines whether this instance has next.
-        /// </summary>
-        /// <returns>
-        ///   <c>true</c> if this instance has next; otherwise, <c>false</c>.
-        /// </returns>
-        bool hasNext();
+            return new Samurai(new SwordEquipmentStrategy(), skills);
+        }
     }
 }

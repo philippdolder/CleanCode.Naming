@@ -14,27 +14,17 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 // </copyright>
-// <summary>
-//   The bowyer.
-// </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace CleanCode.Naming.Factory
 {
     using CleanCode.Naming.Weapons;
 
-    /// <summary>
-    /// The bowyer.
-    /// </summary>
-    public class Bowyer : IWeaponCreator
+    public class BowFactory : IWeaponFactory
     {
-        /// <summary>
-        /// Forges the new weapon.
-        /// </summary>
-        /// <param name="points">The attack points.</param>
-        public Weapon ForgeNewWeapon(double points)
+        public IWeapon Create(double weaponAttackPoints)
         {
-            return new BowImpl(points);
+            return new Bow(weaponAttackPoints);
         }
     }
 }

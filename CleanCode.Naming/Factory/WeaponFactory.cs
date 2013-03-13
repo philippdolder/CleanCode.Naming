@@ -14,68 +14,46 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 // </copyright>
-// <summary>
-//   Defines the WeaponFactory type.
-// </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace CleanCode.Naming.Factory
 {
-    using System;
     using System.Collections.Generic;
 
     using CleanCode.Naming.Weapons;
 
-    /// <summary>
-    /// Creates new weapons for the ultimate fight.
-    /// </summary>
-    public class WeaponCreator
+    public class WeaponFactory
     {
-        /// <summary>
-        /// The smith register
-        /// </summary>
-        private readonly Dictionary<int, IWeaponCreator> smithRegister;
+        private readonly Dictionary<int, IWeaponFactory> smithRegister;
 
-        /// <summary>
-        /// The weapon indication
-        /// </summary>
-        private readonly Utility weaponIndication;
+        private readonly NumberGenerator weaponIndication;
 
-        /// <summary>
-        /// Prevents a default instance of the <see cref="WeaponCreator"/> class from being created.
-        /// </summary>
-        public WeaponCreator()
+        public WeaponFactory()
         {
-            this.weaponIndication = new Utility();
-            this.smithRegister = new Dictionary<int, IWeaponCreator>();
+            this.weaponIndication = new NumberGenerator();
+            this.smithRegister = new Dictionary<int, IWeaponFactory>();
 
             PrepareFactoryForProduction();
         }
 
-        /// <summary>
-        /// Initialize factory.
-        /// </summary>
         private void PrepareFactoryForProduction()
         {
-            this.smithRegister.Add(0, new SwordSmith());
-            this.smithRegister.Add(1, new SpearSmith());
-            this.smithRegister.Add(2, new Bowyer());
+            this.smithRegister.Add(0, new SwordFactory());
+            this.smithRegister.Add(1, new SpearFactory());
+            this.smithRegister.Add(2, new BowFactory());
         }
 
-        /// <summary>
-        /// Forges randomly a new weapon.
-        /// </summary>
-        public Weapon ForgeNewWeapon()
+        public IWeapon ForgeNewWeapon()
         {
             int predicatedWeaponCode = this.weaponIndication.GenerateNumber(0, 2);
 
-            var utility = new Utility();
+            var utility = new NumberGenerator();
 
             double points = utility.GeneratePercentValue() * 100 + 100;
 
             System.Threading.Thread.Sleep(10); // improves random generation
 
-            return this.smithRegister[predicatedWeaponCode].ForgeNewWeapon(points);
+            return this.smithRegister[predicatedWeaponCode].Create(points);
         }
     }
 }

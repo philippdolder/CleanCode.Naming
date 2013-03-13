@@ -24,43 +24,19 @@ namespace CleanCode.Naming.Warriors
     /// <summary>
     /// The skills.
     /// </summary>
-    public class SkillsContainer
+    public class Skills
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SkillsContainer" /> class.
-        /// </summary>
-        /// <param name="attack">The attack.</param>
-        /// <param name="defense">The defense.</param>
-        /// <param name="handicap">The handicap.</param>
-        public SkillsContainer(double attack, double defense, int handicap)
+        public Skills(double attackPoints, double defensePoints, int handicapPoints)
         {
-            this.Attack = attack;
-            this.Defense = defense;
-            this.Handicap = handicap;
+            this.AttackPoints = attackPoints;
+            this.DefensePoints = defensePoints;
+            this.HandicapPoints = handicapPoints;
         }
 
-        /// <summary>
-        /// Gets the attack force.
-        /// </summary>
-        /// <value>
-        /// The attack force.
-        /// </value>
-        public double Attack { get; private set; }
+        public double AttackPoints { get; private set; }
 
-        /// <summary>
-        /// Gets the defense.
-        /// </summary>
-        /// <value>
-        /// The defense.
-        /// </value>
-        public double Defense { get; private set; }
+        public double DefensePoints { get; private set; }
 
-        /// <summary>
-        /// Gets the handicap.
-        /// </summary>
-        /// <value>
-        /// The handicap.
-        /// </value>
-        public int Handicap { get; private set; }
+        public int HandicapPoints { get; private set; }
     }
 }

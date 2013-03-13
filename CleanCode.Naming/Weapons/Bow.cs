@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Elf.cs" company="bbv Software Services AG">
+// <copyright file="BowImpl.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,40 +16,23 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming.Warriors
+namespace CleanCode.Naming.Weapons
 {
-    using CleanCode.Naming.Weapons;
-
-    public class Elf : IWarrior
+    public class Bow : IWeapon
     {
-        private readonly IWeaponEquipmentStrategy weaponEquipmentStrategy;
-
-        private readonly Skills skills;
-
-        private IWeapon weapon;
-
-        public Elf(IWeaponEquipmentStrategy weaponEquipmentStrategy, Skills skills)
+        public Bow(double attackPoints)
         {
-            this.weaponEquipmentStrategy = weaponEquipmentStrategy;
-            this.skills = skills;
+            this.AttackPoints = attackPoints;
         }
 
-        public int CombatLevel
+        public double AttackPoints { get; private set; }
+
+        public string Name
         {
             get
             {
-                return CombatLevelCalculator.Calculate(this.skills, this.weapon);
+                return "bow";
             }
-        }
-
-        public void Equip(IWeapon weapon)
-        {
-            this.weapon = this.weaponEquipmentStrategy.Equip(weapon);
-        }
-
-        public string CombatMessage()
-        {
-            return string.Format("Elf is fighting with {0} ({1} attack points)", this.weapon.Name, this.CombatLevel);
         }
     }
 }

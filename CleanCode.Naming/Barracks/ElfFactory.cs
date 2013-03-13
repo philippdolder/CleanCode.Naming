@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="SpearSmith.cs" company="bbv Software Services AG">
+// <copyright file="ElbLord.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,27 +14,20 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 // </copyright>
-// <summary>
-//   The spear smith.
-// </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming.Factory
+namespace CleanCode.Naming.Barracks
 {
+    using CleanCode.Naming.Warriors;
     using CleanCode.Naming.Weapons;
 
-    /// <summary>
-    /// The spear smith.
-    /// </summary>
-    public class SpearSmith : IWeaponCreator
+    public class ElfFactory : IWarriorFactory
     {
-        /// <summary>
-        /// Forges the new weapon.
-        /// </summary>
-        /// <param name="points">The attack points.</param>
-        public Weapon ForgeNewWeapon(double points)
+        public IWarrior Create(double attackPoints, double defensePoints, int handicapPoints)
         {
-            return new SpearImpl(points);
+            var skills = new Skills(attackPoints, defensePoints, handicapPoints);
+
+            return new Elf(new BowEquipmentStrategy(), skills);
         }
     }
 }

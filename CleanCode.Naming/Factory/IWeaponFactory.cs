@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Program.cs" company="bbv Software Services AG">
+// <copyright file="IWeaponFactory.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,34 +16,12 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming
+namespace CleanCode.Naming.Factory
 {
-    using System;
+    using CleanCode.Naming.Weapons;
 
-    class Program
+    public interface IWeaponFactory
     {
-        static void Main(string[] args)
-        {
-            var game = new GameEngine();
-
-            game.Initialize();
-            game.SetupTeams();
-            
-            Score score = game.RunGame();
-
-            WriteGameResultToConsole(score);
-
-            Console.Write("Press <ENTER> to exit");
-            Console.ReadLine();
-        }
-
-        private static void WriteGameResultToConsole(Score score)
-        {
-            Console.WriteLine(" ");
-            Console.WriteLine("      Team1  vs  Team2");
-            Console.WriteLine("        {0}          {1}", score.Team1, score.Team2);
-            Console.WriteLine(" ");
-            Console.WriteLine(" ");
-        }
+        IWeapon Create(double weaponAttackPoints);
     }
 }

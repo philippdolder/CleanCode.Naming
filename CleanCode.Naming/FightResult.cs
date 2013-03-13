@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Sensei.cs" company="bbv Software Services AG">
+// <copyright file="FightEnd.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,35 +14,25 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 // </copyright>
-// <summary>
-//   A sensei is a teacher of the samurai. He will train new samurais.
-// </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming.Barracks
+namespace CleanCode.Naming
 {
-    using CleanCode.Naming.Warriors;
-    using CleanCode.Naming.Weapons;
-
-    /// <summary>
-    /// A sensei is a teacher of the samurai. He will train new samurais.
-    /// </summary>
-    public class Sensei : Instructor
+    public class FightResult
     {
-        /// <summary>
-        /// Instructs new warriors.
-        /// </summary>
-        /// <param name="o">The offense.</param>
-        /// <param name="d">The defense.</param>
-        /// <param name="p">The penalty.</param>
-        /// <returns>
-        /// A new warrior.
-        /// </returns>
-        public Warrior instruct(double o, double d, int p)
+        public FightResult(bool warriorOfTeam1Wins)
         {
-            var sc = new SkillsContainer(o, d, p);
+            this.WarriorOfTeam1Won = warriorOfTeam1Wins;
+        }
 
-            return new Samurai(new SwordHandlerImpl(), sc);
+        public bool WarriorOfTeam1Won { get; private set; }
+
+        public bool WarriorOfTeam2Won
+        {
+            get
+            {
+                return !this.WarriorOfTeam1Won;
+            }
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="SwordHandlerImp.cs" company="bbv Software Services AG">
+// <copyright file="Philosopher.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,31 +14,20 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 // </copyright>
-// <summary>
-//   Sword fighter weapon handler.
-// </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming.Weapons
+namespace CleanCode.Naming.Barracks
 {
-    /// <summary>
-    /// Sword fighter weapon handler.
-    /// </summary>
-    public class SwordHandlerImpl : WeaponHandler
-    {
-        /// <summary>
-        /// Handles the equipment of the sword.
-        /// </summary>
-        /// <param name="weapon">The weapon for a sword fighter.</param>
-        /// <returns>If weapon is a sword then it will be utilized; otherwise fists.</returns>
-        public Weapon HandleEquipmentOfWeapon(Weapon weapon)
-        {
-            if (weapon is SwordImpl)
-            {
-                return weapon;
-            }
+    using CleanCode.Naming.Warriors;
+    using CleanCode.Naming.Weapons;
 
-            return new FistsImpl();
+    public class AncientGreekFactory : IWarriorFactory
+    {
+        public IWarrior Create(double attackPoints, double defensePoints, int handicapPoints)
+        {
+            var skills = new Skills(attackPoints, defensePoints, handicapPoints);
+
+            return new AncientGreek(new SpearEquipmentStrategy(), skills);
         }
     }
 }

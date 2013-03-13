@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ElbLord.cs" company="bbv Software Services AG">
+// <copyright file="LevelCalculator.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,34 +15,24 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   An elf lord is a teacher of the elf. He will train new elbs.
+//   Level Calculator
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming.Barracks
+namespace CleanCode.Naming.Warriors
 {
-    using CleanCode.Naming.Warriors;
+    using System;
+
     using CleanCode.Naming.Weapons;
 
-    /// <summary>
-    /// An herdir is a teacher of the elf. He will train new elbs.
-    /// </summary>
-    public class Herdir : Instructor
+    public static class CombatLevelCalculator
     {
-        /// <summary>
-        /// Instructs new warriors.
-        /// </summary>
-        /// <param name="o">The offense.</param>
-        /// <param name="d">The defense.</param>
-        /// <param name="p">The penalty.</param>
-        /// <returns>
-        /// A new warrior.
-        /// </returns>
-        public Warrior instruct(double o, double d, int p)
+        public static int Calculate(Skills skills, IWeapon weapon)
         {
-            var sc = new SkillsContainer(o, d, p);
+            double totalAttackPoints = skills.AttackPoints + weapon.AttackPoints;
+            double totalDefensPoints = skills.DefensePoints / skills.HandicapPoints;
 
-            return new Elf(new BowHandlerImpl(), sc);
+            return Convert.ToInt32(Math.Ceiling(totalAttackPoints + totalDefensPoints));
         }
     }
 }

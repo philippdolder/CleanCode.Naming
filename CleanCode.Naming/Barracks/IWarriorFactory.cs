@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="WeaponHandler.cs" company="bbv Software Services AG">
+// <copyright file="Instructor.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,23 +14,14 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 // </copyright>
-// <summary>
-//   Weapon handler interface.
-// </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming.Weapons
+namespace CleanCode.Naming.Barracks
 {
-    /// <summary>
-    /// Weapon handler interface.
-    /// </summary>
-    public interface WeaponHandler
+    using CleanCode.Naming.Warriors;
+
+    public interface IWarriorFactory
     {
-        /// <summary>
-        /// Handles the equipment of a specific weapon.
-        /// </summary>
-        /// <param name="weapon">The weapon.</param>
-        /// <returns>The effective weapon of a warrior.</returns>
-        Weapon HandleEquipmentOfWeapon(Weapon weapon);
+        IWarrior Create(double attackPoints, double defensePoints, int handicapPoints);
     }
 }

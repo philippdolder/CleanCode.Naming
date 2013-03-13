@@ -23,67 +23,36 @@ namespace CleanCode.Naming.Warriors
 {
     using CleanCode.Naming.Weapons;
 
-    /// <summary>
-    /// The mighty and super strong with the sword Samurai!!!!
-    /// </summary>
-    /// <remarks>
-    /// The mighty samurai is a master of the art of the sword. However, if he doesn't get his
-    /// favored killing tool, he will fight with his bare hands rather than using another weapon!
-    /// </remarks>
-    public class Samurai : Warrior
+    public class Samurai : IWarrior
     {
-        /// <summary>
-        /// The weapon handler
-        /// </summary>
-        private readonly WeaponHandler weaponHandler;
+        private readonly IWeaponEquipmentStrategy weaponEquipmentStrategy;
 
-        /// <summary>
-        /// The honored samurai weapon
-        /// </summary>
-        private Weapon honoredSamuraiWeapon;
+        private readonly Skills skills;
 
-        /// <summary>
-        /// The qualities
-        /// </summary>
-        private SkillsContainer qualities;
+        private IWeapon weapon;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Samurai" /> class.
-        /// </summary>
-        /// <param name="weaponHandler">The weapon handler.</param>
-        /// <param name="theQualities">The qualities.</param>
-        public Samurai(WeaponHandler weaponHandler, SkillsContainer theQualities)
+        public Samurai(IWeaponEquipmentStrategy weaponEquipmentStrategy, Skills skills)
         {
-            this.weaponHandler = weaponHandler;
-            this.qualities = theQualities;
+            this.weaponEquipmentStrategy = weaponEquipmentStrategy;
+            this.skills = skills;
         }
 
-        /// <summary>
-        /// Combats the level.
-        /// </summary>
         public int CombatLevel
         {
             get
             {
-                return LevelCalculationHelper.DetermineCombatLevel(this.qualities, this.honoredSamuraiWeapon);
+                return CombatLevelCalculator.Calculate(this.skills, this.weapon);
             }
         }
 
-        /// <summary>
-        /// Equips the warrior with a cool killing tool ^^.
-        /// </summary>
-        /// <param name="weapon">The weapon.</param>
-        public void TakeKillingTool(Weapon weapon)
+        public void Equip(IWeapon weapon)
         {
-            this.honoredSamuraiWeapon = this.weaponHandler.HandleEquipmentOfWeapon(weapon);
+            this.weapon = this.weaponEquipmentStrategy.Equip(weapon);
         }
 
-        /// <summary>
-        /// Combats the level.
-        /// </summary>
-        public string CombatLevelText()
+        public string CombatMessage()
         {
-            return string.Format("Samurai is fighting with {0} ({1} attack points)", this.honoredSamuraiWeapon.Label, this.CombatLevel);
+            return string.Format("Samurai is fighting with {0} ({1} attack points)", this.weapon.Name, this.CombatLevel);
         }
     }
 }

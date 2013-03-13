@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="BowImpl.cs" company="bbv Software Services AG">
+// <copyright file="SwordImpl.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,46 +14,24 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 // </copyright>
-// <summary>
-//   Bow implementation.
-// </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace CleanCode.Naming.Weapons
 {
-    /// <summary>
-    /// Bow implementation.
-    /// </summary>
-    public class BowImpl : Weapon
+    public class Sword : IWeapon
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BowImpl" /> class.
-        /// </summary>
-        /// <param name="attakPoints">The attak points.</param>
-        public BowImpl(double attackPoints)
+        public Sword(double attackPoints)
         {
-            APoints = attackPoints;
+            this.AttackPoints = attackPoints;
         }
 
-        /// <summary>
-        /// Gets the attack points.
-        /// </summary>
-        /// <value>
-        /// The attack points.
-        /// </value>
-        public double APoints { get; private set; }
+        public double AttackPoints { get; private set; }
 
-        /// <summary>
-        /// Gets the label.
-        /// </summary>
-        /// <value>
-        /// The label.
-        /// </value>
-        public string Label
+        public string Name
         {
             get
             {
-                return "bow";
+                return "sword";
             }
         }
     }

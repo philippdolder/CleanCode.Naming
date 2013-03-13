@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Warrior.cs" company="bbv Software Services AG">
+// <copyright file="StorageManager.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,34 +14,40 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 // </copyright>
-// <summary>
-//   Defines the Warrior type.
-// </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming.Warriors
+namespace CleanCode.Naming.Storages
 {
+    using System.Collections.Generic;
+
     using CleanCode.Naming.Weapons;
 
-    /// <summary>
-    /// Warrior interface.
-    /// </summary>
-    public interface Warrior
+    public class StorageStack
     {
-        /// <summary>
-        /// Combats the level.
-        /// </summary>
-        int CombatLevel { get; }
+        private readonly WeaponCollection weaponCollection;
 
-        /// <summary>
-        /// Equips the warrior with a cool killing tool ^^.
-        /// </summary>
-        /// <param name="weapon">The weapon.</param>
-        void TakeKillingTool(Weapon weapon);
+        public StorageStack()
+        {
+            this.weaponCollection = new WeaponCollection();
+        }
 
-        /// <summary>
-        /// Combats the level.
-        /// </summary>
-        string CombatLevelText();
+        public IEnumerator<IWeapon> GetEnumerator()
+        {
+            return new StorageEnumerator(this.weaponCollection);
+        }
+
+        public void Push(IWeapon newWeapon)
+        {
+            this.weaponCollection.Add(newWeapon);
+        }
+
+        public IWeapon Pop()
+        {
+            IWeapon popedWeapon = this.weaponCollection.GetAt(this.weaponCollection.Count - 1);
+
+            this.weaponCollection.RemoveAt(this.weaponCollection.Count - 1);
+
+            return popedWeapon;
+        }
     }
 }

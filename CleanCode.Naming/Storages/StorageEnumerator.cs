@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="FistImpl.cs" company="bbv Software Services AG">
+// <copyright file="StorageIteratorImpl.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,44 +14,58 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 // </copyright>
-// <summary>
-//   Defines the FistImpl type.
-// </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CleanCode.Naming.Weapons
+namespace CleanCode.Naming.Storages
 {
-    /// <summary>
-    /// Fist implementation
-    /// </summary>
-    public class FistsImpl : Weapon
+    using System.Collections;
+    using System.Collections.Generic;
+
+    using CleanCode.Naming.Weapons;
+
+    public class StorageEnumerator : IEnumerator<IWeapon>
     {
-        /// <summary>
-        /// Gets the attack points.
-        /// </summary>
-        /// <value>
-        /// The attack points.
-        /// </value>
-        public double APoints
+        private readonly WeaponCollection weaponCollection;
+
+        private int index;
+
+        public StorageEnumerator(WeaponCollection weaponCollection)
+        {
+            this.weaponCollection = weaponCollection;
+
+            this.Reset();
+        }
+
+        public IWeapon Current
         {
             get
             {
-                return 0;
+                return this.weaponCollection.GetAt(this.index);
             }
         }
 
-        /// <summary>
-        /// Gets the label.
-        /// </summary>
-        /// <value>
-        /// The label.
-        /// </value>
-        public string Label
+        object IEnumerator.Current
         {
             get
             {
-                return "fists";
+                return this.Current;
             }
+        }
+
+        public bool MoveNext()
+        {
+            this.index++;
+
+            return this.index < this.weaponCollection.Count;
+        }
+
+        public void Reset()
+        {
+            this.index = -1;
+        }
+
+        public void Dispose()
+        {
         }
     }
 }

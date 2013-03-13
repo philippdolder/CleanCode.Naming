@@ -14,9 +14,6 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 // </copyright>
-// <summary>
-//   Common Functions.
-// </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace CleanCode.Naming
@@ -24,48 +21,32 @@ namespace CleanCode.Naming
     using System;
     using System.Threading;
 
-    /// <summary>
-    /// Common Functions.
-    /// </summary>
-    public class Utility
+    public class NumberGenerator
     {
-        /// <summary>
-        /// The RND.
-        /// </summary>
-        private Random rnd;
+        private readonly Random random;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Utility" /> class.
-        /// </summary>
-        public Utility()
+        public NumberGenerator()
         {
-            this.rnd = new Random();
+            this.random = new Random();
         }
 
-        /// <summary>
-        /// Generates the number.
-        /// </summary>
-        /// <param name="smallestPossible">The smallest possible.</param>
-        /// <param name="greatestPossible">The greatest possible.</param>
         public int GenerateNumber(int smallestPossible, int greatestPossible)
         {
-            int gnrNbr = rnd.Next(smallestPossible, greatestPossible + 1);
+            WaitForRandomImprovement();
 
-            Thread.Sleep(30); // improves random generation
-
-            return gnrNbr;
+            return this.random.Next(smallestPossible, greatestPossible + 1);
         }
 
-        /// <summary>
-        /// Generates a percent value between 0 and 1.
-        /// </summary>
         public double GeneratePercentValue()
         {
-            double pV = rnd.NextDouble();
+            WaitForRandomImprovement();
 
-            Thread.Sleep(30); // improves random generation
+            return this.random.NextDouble();
+        }
 
-            return pV;
+        private static void WaitForRandomImprovement()
+        {
+            Thread.Sleep(30);
         }
     }
 }
